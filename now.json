@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "name": "yts-proxy",
+  "builds": [{ "src": "*.js", "use": "@now/node" }],
+  "routes": [{ "src": "^/.*", "dest": "index.js" }]
+}
