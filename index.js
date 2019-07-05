@@ -3,6 +3,7 @@ const YTS_URL = "https://yts.lt/api/v2";
 
 module.exports = async (req, res) => {
   const { url } = req;
+  res.setHeader("Access-Control-Allow-Origin", "*");
   if (url === "/") {
     return res.json({
       ok: false,
