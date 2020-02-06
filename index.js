@@ -3,7 +3,6 @@ const YTS_URL = "https://yts.mx/api/v2";
 
 module.exports = async (req, res) => {
   const { url } = req;
-  res.setHeader("Access-Control-Allow-Origin", "*");
   if (url === "/") {
     return res.json({
       ok: false,
@@ -11,12 +10,9 @@ module.exports = async (req, res) => {
       endpoint_documentation: "https://yts.mx/api"
     });
   }
-  try {
-    const reqURL = `${YTS_URL}${url}`;
-    const { data } = await axios.get(reqURL);
-    return res.json(data);
-  } catch (error) {
-    console.log(error);
-    return res.json({ error });
-  }
+  res.writeHead(302, {
+    Location: `${YTS_URL}${url}`,
+    "Access-Control-Allow-Origin": "*"
+  });
+  return res.end();
 };
