@@ -11,6 +11,8 @@ module.exports = async (req, res) => {
       endpoint_documentation: "https://yts.mx/api"
     });
   }
-  const { data } = await axios.get(`${YTS_URL}${url}`);
+  const reqURL = `${YTS_URL}${url}`;
+  console.log(reqURL);
+  const { data } = await axios.get(reqURL);
   return res.json(data);
 };
