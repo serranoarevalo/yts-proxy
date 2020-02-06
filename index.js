@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
   try {
     const reqURL = `${YTS_URL}${url}`;
     const { data } = await axios.get(reqURL);
-    return data;
+    return res.json({ data });
   } catch (error) {
     console.log(error);
   }
