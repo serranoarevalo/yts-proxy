@@ -12,12 +12,8 @@ module.exports = async (req, res) => {
   }
   try {
     const reqURL = `${YTS_URL}${url}`;
-    res.writeHead(302, {
-      Location: reqURL,
-      "Access-Control-Allow-Origin": "*"
-      //add other headers here...
-    });
-    res.end();
+    const { data } = await axios.get(reqURL);
+    return data;
   } catch (error) {
     console.log(error);
   }
