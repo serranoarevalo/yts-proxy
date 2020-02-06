@@ -1,5 +1,5 @@
 const axios = require("axios");
-const YTS_URL = "https://yts.lt/api/v2";
+const YTS_URL = "https://yts.mx/api/v2";
 
 module.exports = async (req, res) => {
   const { url } = req;
@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
     return res.json({
       ok: false,
       error: "You need to specify an endpoint",
-      endpoint_documentation: "https://yts.lt/api"
+      endpoint_documentation: "https://yts.mx/api"
     });
   }
   const { data } = await axios.get(`${YTS_URL}${url}`);
