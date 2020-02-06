@@ -3,7 +3,6 @@ const YTS_URL = "https://yts.mx/api/v2";
 
 module.exports = async (req, res) => {
   const { url } = req;
-  res.setHeader("Access-Control-Allow-Origin", "*");
   if (url === "/") {
     return res.json({
       ok: false,
@@ -14,7 +13,8 @@ module.exports = async (req, res) => {
   try {
     const reqURL = `${YTS_URL}${url}`;
     res.writeHead(302, {
-      Location: reqURL
+      Location: reqURL,
+      "Access-Control-Allow-Origin": "*"
       //add other headers here...
     });
     res.end();
